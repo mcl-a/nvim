@@ -26,7 +26,17 @@ local servers = {
   -- eslint = {},
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false },
+      format = { enable = false, },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.stdpath "config" .. "/lua"] = true,
+        },
+      },
       telemetry = { enable = false },
     },
   },
@@ -64,6 +74,14 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+-- disable in buffer lsp diagnostic messages
+vim.diagnostic.config({
+  -- signs = false,
+  underline = false,
+  virtual_text = false,
+  -- virtual_text = {spacing = 4},
+})
 
 -- CMP
 local cmp = require 'cmp'

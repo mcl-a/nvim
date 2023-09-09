@@ -62,11 +62,11 @@ return {
             -- Note: lsp doesn't work as well with multiple langs in a project
             -- detection methods = {'lsp', 'pattern'},
             detection_methods = {'pattern'},
-    
+
             -- patterns used to detect the root dir
             patterns = {'.git', 'Makefile', 'package.json'},
           })
-    
+
           require('telescope').load_extension('projects')
         end
       },
@@ -91,11 +91,30 @@ return {
   },
 
   -- leap around the buffer(s)
-  { 'ggandor/leap.nvim', opt = {} },
+  { 'ggandor/leap.nvim', opts = {} },
 
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
 
-  { 'rcarriga/nvim-notify', opt = {} },
+  { 'rcarriga/nvim-notify', opts = {} },
+
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        -- backdrop = 0.95,           -- shade the backdrop of the zen window
+        -- width = 120,               -- width of the zen window
+        -- height = 1,                -- height of the zen window
+        options = {
+          signcolumn = no,         -- disable sign column
+          number = false,          -- disable number column
+          relativenumber = false,  -- disable relative numbers
+          -- cursorline = false,      -- disable cursorline
+          foldcolumn = '0',        -- disable fold column
+          list = false,            -- disable whitespace characters
+        },
+      },
+    },
+  },
 
   -- startup screen
   {

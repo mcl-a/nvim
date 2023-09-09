@@ -33,6 +33,9 @@ nmap('<leader>L', '<cmd>LspInfo<CR>')
 -- netrw
 nmap('<leader>t', ':Lexplore<CR>')
 
+-- zenmode
+nmap('<leader>z', '<cmd>ZenMode<CR>')
+
 -- split screen and buffer navigation
 nmap('<leader>v', ':vsplit<CR><C-w>l')
 nmap('<c-space>', '<C-w>w')
@@ -122,6 +125,7 @@ local M = {}
 
 -- LSP
 M.lsp_keymaps = {
+  -- keys         mapping            doc
   -- See `:help K` for why this keymap
   { '<leader>K',  vim.lsp.buf.hover, 'Hover' },
   { '<C-k>', vim.lsp.buf.signature_help, 'Signature help' },
