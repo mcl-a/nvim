@@ -105,7 +105,7 @@ return {
         -- width = 120,               -- width of the zen window
         -- height = 1,                -- height of the zen window
         options = {
-          signcolumn = no,         -- disable sign column
+          signcolumn = 'no',       -- disable sign column
           number = false,          -- disable number column
           relativenumber = false,  -- disable relative numbers
           -- cursorline = false,      -- disable cursorline
