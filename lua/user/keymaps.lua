@@ -60,6 +60,10 @@ nmap('>', '>gv')
 -- Clear highlights
 nmap('<leader>h', '<cmd>nohlsearch<CR>')
 
+-- Toggle word highlight .. clear all highlights
+nmap('<leader>Ht', '<cmd>lua require"mywords".hl_toggle()<cr>')
+nmap('<leader>Hc', '<cmd>lua require"mywords".uhl_all()<cr>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
   { silent = true, noremap = true, desc = 'Go to previous diagnostic message' })
@@ -110,15 +114,15 @@ vim.keymap.set('n', '<leader>/',
   { silent = true, noremap = true, desc = '[/] Fuzzily search in current buffer' })
 
 -- DAP
--- nmap('<leader>db', '<cmd>lua require'dap'.toggle_breakpoint()<cr>')
--- nmap('<leader>dc', '<cmd>lua require'dap'.continue()<cr>')
--- nmap('<leader>di', '<cmd>lua require'dap'.step_into()<cr>')
--- nmap('<leader>do', '<cmd>lua require'dap'.step_over()<cr>')
--- nmap('<leader>dO', '<cmd>lua require'dap'.step_out()<cr>')
--- nmap('<leader>dr', '<cmd>lua require'dap'.repl.toggle()<cr>')
--- nmap('<leader>dl', '<cmd>lua require'dap'.run_last()<cr>')
--- nmap('<leader>du', '<cmd>lua require'dapui'.toggle()<cr>')
--- nmap('<leader>dt', '<cmd>lua require'dap'.terminate()<cr>')
+-- nmap('<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<cr>')
+-- nmap('<leader>dc', '<cmd>lua require"dap".continue()<cr>')
+-- nmap('<leader>di', '<cmd>lua require"dap".step_into()<cr>')
+-- nmap('<leader>do', '<cmd>lua require"dap".step_over()<cr>')
+-- nmap('<leader>dO', '<cmd>lua require"dap".step_out()<cr>')
+-- nmap('<leader>dr', '<cmd>lua require"dap".repl.toggle()<cr>')
+-- nmap('<leader>dl', '<cmd>lua require"dap".run_last()<cr>')
+-- nmap('<leader>du', '<cmd>lua require"dapui".toggle()<cr>')
+-- nmap('<leader>dt', '<cmd>lua require"dap".terminate()<cr>')
 
 -- Maps below are exported for plugin setup fns to consume
 local M = {}

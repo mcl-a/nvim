@@ -97,6 +97,12 @@ return {
 
   { 'rcarriga/nvim-notify', opts = {} },
 
+  -- manage marks
+  { 'chentoast/marks.nvim', opts = {} },
+
+  -- toggle highlight of words
+  { 'dwrdx/mywords.nvim' },
+
   {
     'folke/zen-mode.nvim',
     opts = {
