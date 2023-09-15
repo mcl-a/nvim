@@ -39,7 +39,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
 
-  -- "gc" to comment visual regions/lines
+  -- "gc" or "gb" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -73,9 +73,9 @@ return {
     },
     opts = {
       defaults = {
-        --prompt_prefix = ' ',
-        --selection_caret = ' ',
-        --path_display = { 'smart' },
+        -- prompt_prefix = ' ',
+        -- selection_caret = ' ',
+        -- path_display = { 'smart' },
         file_ignore_patterns = { '.git/', 'node_modules' },
       },
     },
