@@ -139,7 +139,7 @@ M.lsp_keymaps = {
   { '<leader>lD', vim.lsp.buf.declaration, 'Goto declaration' },
   { '<leader>lI', vim.lsp.buf.implementation, 'Goto implementation' },
   { '<leader>lT', vim.lsp.buf.type_definition, 'Goto type definition' },
-  { '<leader>lrn', vim.lsp.buf.rename, 'Rename symbol' },
+  { '<leader>lR', vim.lsp.buf.rename, 'Rename symbol' },
   { '<leader>lF', vim.lsp.buf.format, 'Format buffer' },
   { '<leader>la', vim.lsp.buf.code_action, 'Apply code action' },
   { '<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace folder' },
