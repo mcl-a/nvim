@@ -75,15 +75,16 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist,
   { silent = true, noremap = true, desc = 'Open diagnostics list' })
 
 -- See `:help telescope.builtin`
+nmap('<leader><space>', ':Telescope buffers<CR>')
 nmap('<leader>ff', ':Telescope find_files<CR>')
+nmap('<leader>fG', ':Telescope git_files<CR>')
 nmap('<leader>fg', ':Telescope live_grep<CR>')
 nmap('<leader>fw', ':Telescope grep_string<CR>')
-nmap('<leader>fG', ':Telescope git_files<CR>')
-nmap('<leader><space>', ':Telescope buffers<CR>')
 nmap('<leader>fc', ':Telescope commands<CR>')
 nmap('<leader>fm', ':Telescope man_pages sections=1,2,3,4,5,6,7,8<CR>')
 nmap('<leader>fM', ':Telescope marks<CR>')
 nmap('<leader>fq', ':Telescope quickfix<CR>')
+nmap('<leader>fl', ':Telescope loclist<CR>')
 nmap('<leader>fj', ':Telescope jumplist<CR>')
 nmap('<leader>?', ':Telescope oldfiles<CR>')
 nmap('<leader>fd', ':Telescope lsp_definitions<CR>')
@@ -135,10 +136,10 @@ M.lsp_keymaps = {
   { '<C-k>', vim.lsp.buf.signature_help, 'Signature help' },
   { '<leader>ls', vim.lsp.buf.signature_help, 'Signature help' },
   { '<leader>ld', vim.lsp.buf.definition, 'Goto definition' },
-  { '<leader>lr', vim.lsp.buf.references, 'Goto references' },
   { '<leader>lD', vim.lsp.buf.declaration, 'Goto declaration' },
-  { '<leader>lI', vim.lsp.buf.implementation, 'Goto implementation' },
-  { '<leader>lT', vim.lsp.buf.type_definition, 'Goto type definition' },
+  { '<leader>lr', vim.lsp.buf.references, 'Goto references' },
+  { '<leader>li', vim.lsp.buf.implementation, 'Goto implementation' },
+  { '<leader>lt', vim.lsp.buf.type_definition, 'Goto type definition' },
   { '<leader>lR', vim.lsp.buf.rename, 'Rename symbol' },
   { '<leader>lF', vim.lsp.buf.format, 'Format buffer' },
   { '<leader>la', vim.lsp.buf.code_action, 'Apply code action' },
