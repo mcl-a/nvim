@@ -202,6 +202,10 @@ require('nvim-treesitter.configs').setup {
       goto_next_start = {
         [']m'] = '@function.outer',
         [']]'] = '@class.outer',
+        ["]o"] = "@loop.*",
+        -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } },
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
       },
       goto_next_end = {
         [']M'] = '@function.outer',
@@ -215,6 +219,13 @@ require('nvim-treesitter.configs').setup {
         ['[M'] = '@function.outer',
         ['[]'] = '@class.outer',
       },
+      -- Below will go to either the start or the end, whichever is closer.
+      goto_next = {
+        ["]c"] = "@conditional.outer",
+      },
+      goto_previous = {
+        ["[c"] = "@conditional.outer",
+      }
     },
     swap = {
       enable = true,
