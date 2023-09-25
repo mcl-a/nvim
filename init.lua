@@ -17,6 +17,5 @@ require "user.options"
 require "user.keymaps"
 require("lazy").setup("user.plugins")
 require("user.setup")
-require("leap").add_default_mappings()
 require("user.autocommands")
 require("user.globals")
