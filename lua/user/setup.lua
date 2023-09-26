@@ -1,19 +1,3 @@
--- LUALINE
--- vim.g.ayuprefermirage = true
-require('lualine').setup{
-  options = {
-    -- icons_enabled = false,
-    -- theme = 'onedark',
-    theme = 'OceanicNext',
-    -- theme = 'ayu',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
 -- LSP
 -- enable the following language servers
 local servers = {
@@ -22,14 +6,15 @@ local servers = {
   rust_analyzer = {},
   --pyright = {},
   pylsp = {},
-  hls = {},
+  -- hls = {},
   -- tsserver = {},
   -- eslint = {},
   lua_ls = {
     Lua = {
-      format = { enable = false, },
-      diagnostics = {
-        globals = { "vim" },
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT'
       },
       workspace = {
         checkThirdParty = false,
@@ -37,13 +22,18 @@ local servers = {
           [vim.fn.expand "$VIMRUNTIME/lua"] = true,
           [vim.fn.stdpath "config" .. "/lua"] = true,
         },
+        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+        -- library = vim.api.nvim_get_runtime_file("", true)
       },
-      telemetry = { enable = false },
+      format = { enable = false, },
+      diagnostics = {
+        globals = { "vim" },
+      },
     },
   },
 }
 
--- This fn gets run when an LSP server connects to a buffer
+-- Load the LSP keymaps when an LSP server connects to a buffer
 local on_attach = function(_, bufnr)
   for _, mapping in ipairs(require('user.keymaps').lsp_keymaps) do
     local key = mapping[1]
@@ -58,25 +48,17 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
+local lspconfig = require('lspconfig')
+for server, cfg in pairs(servers) do
+  lspconfig[server].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = cfg,
+    filetypes = (servers[server] or {}).filetypes,
+  })
+end
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end
-}
-
--- disable in buffer lsp diagnostic messages
+-- configure lsp diagnostic messages
 vim.diagnostic.config({
   -- signs = false,
   underline = false,
@@ -130,6 +112,9 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Setup neovim lua configuration
+require('neodev').setup()
 
 -- TELESCOPE
 require('telescope').setup {           -- defaults
@@ -236,6 +221,19 @@ require('nvim-treesitter.configs').setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
+  },
+}
+
+-- LUALINE
+-- vim.g.ayuprefermirage = true
+require('lualine').setup{
+  options = {
+    -- icons_enabled = false,
+    -- theme = 'onedark',
+    theme = 'OceanicNext',
+    -- theme = 'ayu',
+    component_separators = '|',
+    section_separators = '',
   },
 }
 

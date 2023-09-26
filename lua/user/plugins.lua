@@ -3,15 +3,21 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-
       -- Useful status updates for LSP
       -- Note: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       'folke/neodev.nvim',
     },
+  },
+
+  -- Highlight, edit, and navigate code
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
   },
 
   -- Autocompletion
@@ -29,18 +35,6 @@ return {
       'rafamadriz/friendly-snippets',
     },
   },
-
-  -- Show pending keybinds
-  { 'folke/which-key.nvim', opts = {} },
-
-  -- Use lualine as statusline
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-
-  -- "gc" or "gb" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -81,14 +75,17 @@ return {
     },
   },
 
-  -- Highlight, edit, and navigate code
+  -- Show pending keybinds
+  { 'folke/which-key.nvim', opts = {} },
+
+  -- Use lualine as statusline
   {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+
+  -- "gc" or "gb" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- navigate with search labels
   {

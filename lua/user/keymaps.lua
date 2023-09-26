@@ -24,9 +24,6 @@ nmap('<leader>s', ':source<CR>')
 -- Lazy UI
 nmap('<leader>P', ':Lazy<CR>')
 
--- Mason UI
-nmap('<leader>M', '<cmd>Mason<CR>')
-
 -- LSP Info
 nmap('<leader>L', '<cmd>LspInfo<CR>')
 
