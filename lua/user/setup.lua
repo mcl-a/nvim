@@ -1,19 +1,3 @@
--- LUALINE
--- vim.g.ayuprefermirage = true
-require('lualine').setup{
-  options = {
-    -- icons_enabled = false,
-    -- theme = 'onedark',
-    theme = 'OceanicNext',
-    -- theme = 'ayu',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
 -- LSP
 -- enable the following language servers
 local servers = {
@@ -131,39 +115,8 @@ cmp.setup {
   },
 }
 
--- TELESCOPE
-require('telescope').setup {           -- defaults
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    }
-  }
-}
-
--- Enable telescope fzf native
--- pcall(require('telescope').load_extension('fzf'))
-
--- WHICH-KEY
-require('which-key').setup{
-  window = {
-    border = 'rounded',       -- none, single, double, shadow
-    position = 'bottom',      -- bottom, top
-    winblend = 0,
-  }
-}
+-- Setup neovim lua configuration
+require('neodev').setup()
 
 -- TREE-SITTER
 require('nvim-treesitter.configs').setup {
@@ -236,6 +189,53 @@ require('nvim-treesitter.configs').setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
+  },
+}
+
+-- TELESCOPE
+require('telescope').setup {           -- defaults
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+  },
+
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+
+-- Enable telescope fzf native
+-- pcall(require('telescope').load_extension('fzf'))
+
+-- WHICH-KEY
+require('which-key').setup{
+  window = {
+    border = 'rounded',       -- none, single, double, shadow
+    position = 'bottom',      -- bottom, top
+    winblend = 0,
+  }
+}
+
+-- LUALINE
+-- vim.g.ayuprefermirage = true
+require('lualine').setup{
+  options = {
+    -- icons_enabled = false,
+    -- theme = 'onedark',
+    theme = 'OceanicNext',
+    -- theme = 'ayu',
+    component_separators = '|',
+    section_separators = '',
   },
 }
 

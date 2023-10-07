@@ -1,4 +1,5 @@
 vim.g.netrw_winsize = 20       -- size of the netrw window
+vim.opt.fileformat = 'unix'    -- force unix
 vim.opt.background = 'dark'    -- 'dark' or 'light', used for highlight colors
 vim.opt.termguicolors = true   -- enable 24-bit RGB color in the TUI
 vim.opt.backup = false         -- keep backup file after overwriting a file
